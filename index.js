@@ -1,2 +1,4 @@
-const titleCase = (str) =>
-  str.toLowerCase().replace(/\b\w/g, (char) => char.toUpperCase());
+const difference = (a, b) => {
+  const s = new Set(b);
+  return a.filter((x) => !s.has(x));
+};
