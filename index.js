@@ -1,4 +1,10 @@
-const difference = (a, b) => {
-  const s = new Set(b);
-  return a.filter((x) => !s.has(x));
-};
+function removeDuplicates(nums) {
+  let index = 0;
+  for (let i = 1; i < nums.length; i++) {
+    if (nums[i] !== nums[index]) {
+      index++;
+      nums[index] = nums[i];
+    }
+  }
+  return index + 1;
+}
