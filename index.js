@@ -1,10 +1,16 @@
-function removeDuplicates(nums) {
-  let index = 0;
-  for (let i = 1; i < nums.length; i++) {
-    if (nums[i] !== nums[index]) {
-      index++;
-      nums[index] = nums[i];
+function minPathSum(grid) {
+  const rows = grid.length;
+  const cols = grid[0].length;
+  for (let i = 1; i < rows; i++) {
+    grid[i][0] += grid[i - 1][0];
+  }
+  for (let j = 1; j < cols; j++) {
+    grid[0][j] += grid[0][j - 1];
+  }
+  for (let i = 1; i < rows; i++) {
+    for (let j = 1; j < cols; j++) {
+      grid[i][j] += Math.min(grid[i - 1][j], grid[i][j - 1]);
     }
   }
-  return index + 1;
+  return grid[rows - 1][cols - 1];
 }
