@@ -1,16 +1,12 @@
-function minPathSum(grid) {
-  const rows = grid.length;
-  const cols = grid[0].length;
-  for (let i = 1; i < rows; i++) {
-    grid[i][0] += grid[i - 1][0];
-  }
-  for (let j = 1; j < cols; j++) {
-    grid[0][j] += grid[0][j - 1];
-  }
-  for (let i = 1; i < rows; i++) {
-    for (let j = 1; j < cols; j++) {
-      grid[i][j] += Math.min(grid[i - 1][j], grid[i][j - 1]);
+function insertionSort(arr) {
+  for (let i = 1; i < arr.length; i++) {
+    let key = arr[i];
+    let j = i - 1;
+    while (j >= 0 && arr[j] > key) {
+      arr[j + 1] = arr[j];
+      j--;
     }
+    arr[j + 1] = key;
   }
-  return grid[rows - 1][cols - 1];
+  return arr;
 }
